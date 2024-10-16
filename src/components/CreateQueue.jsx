@@ -56,42 +56,36 @@ const CreateQueue = () => {
   }
 
   return (
-    <div style={{ margin: '2rem' }}>
-      <h2>Create a New Queue</h2>
+    <div className='amoled p-4 rounded-lg' >
+      <h2 className='text-2xl text-center '>Create a New Queue</h2>
       {/* Only allow form submission if the user has the "poster" role */}
       {userRole === 'creator' ? (
-        <form onSubmit={handleCreateQueue}>
-          <div>
-            <label>Queue Name:</label>
-            <input
-              type="text"
+        <form onSubmit={handleCreateQueue} className='flex flex-col  justify-center gap-2'>
+          <div className='flex flex-col gap-2'>
+            <label className='font-rubik font-bold'>Queue Name:</label>
+            <input ype="text"
               value={queueName}
               onChange={(e) => setQueueName(e.target.value)}
               placeholder="Enter queue name"
-              required
-            />
+              required  className="input input-bordered w-full max-w-xs" />
           </div>
-          <div>
-            <label>Queue Description:</label>
-            <textarea
-              value={queueDescription}
+          <div className='flex flex-col gap-2'>
+            <label className='font-rubik font-bold'>Queue Description:</label>
+            <textarea value={queueDescription}
               onChange={(e) => setQueueDescription(e.target.value)}
               placeholder="Enter queue description"
-              required
-            />
+              required className="textarea textarea-bordered" ></textarea>
           </div>
-          <div>
-            <label>Max Capacity:</label>
-            <input
-              type="number"
+          <div className='flex flex-col gap-2'>
+            <label className='font-rubik font-bold'>Max Capacity:</label>
+            <input type="number"
               value={maxCapacity}
               onChange={(e) => setMaxCapacity(e.target.value)}
               placeholder="Enter maximum capacity"
               required
-              min="1"
-            />
+              min="1" className="input input-bordered w-full max-w-xs" />
           </div>
-          <button type="submit">Create Queue</button>
+          <button className='btn' type="submit">Create Queue</button>
         </form>
       ) : (
         <p>Only users with the "poster" role can create queues.</p>

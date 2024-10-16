@@ -24,7 +24,7 @@ const AllQueuesByUser = ({ userId }) => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className="p-4">
+    <div className='amoled p-4 rounded-lg'>
       <h2 className="text-2xl font-semibold mb-4">All Queues Created By You</h2>
       {queues.length === 0 ? (
         <p>No queues created yet.</p>

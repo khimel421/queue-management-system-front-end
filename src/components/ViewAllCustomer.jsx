@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import useUserRole from '../hooks/useUserRole';
 
 const ViewAllCustomers = ({ queueId, creatorId }) => {
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  
 
   // Fetch all customers in the queue when the component loads
   useEffect(() => {
@@ -20,6 +22,17 @@ const ViewAllCustomers = ({ queueId, creatorId }) => {
     fetchCustomers();
   }, [queueId]);
 
+
+  const handleServeUser = async (userId) => {
+    try {
+      await axios.post(`/serve-user/${userId}/${queueId}`);
+      fetchQueueData(); // Refresh queue data after serving a user
+      setErrorMessage("");
+    } catch (error) {
+      setErrorMessage("Failed to mark user as served.");
+    }
+  };
+
   // Update the status of a user in the queue
   const updateStatus = async (userId, newStatus) => {
     try {
@@ -28,6 +41,7 @@ const ViewAllCustomers = ({ queueId, creatorId }) => {
         queueId,
         status: newStatus,
       });
+      
       // Update the local state to reflect the changes
       setCustomers((prevCustomers) =>
         prevCustomers.map((customer) =>
@@ -44,7 +58,7 @@ const ViewAllCustomers = ({ queueId, creatorId }) => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className="p-4">
+    <div className='amoled p-4 rounded-lg'>
       <h2 className="text-2xl font-semibold mb-4">Queue Management</h2>
       {customers.length === 0 ? (
         <p>No customers are currently in the queue.</p>

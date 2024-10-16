@@ -8,20 +8,25 @@ import Register from './pages/Register';
 import Home from './pages/Home';
 import Login from './pages/LogIn';
 import ClientDashboard from './pages/ClientDashBoard';
+import Navbar from './components/Navbar';
+import QueueStatus from './components/QueueStatus';
 
 const App = () => {
 
   
   return (
     <Router>
-      <div>
+      <Navbar/>
+      <div className='max-w-screen-2xl mx-auto font-rubik'>
+        
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Register/>} />
           <Route path="/signin" element={<Login/>} />
           <Route path="/clientdashboard" element={<ClientDashboard/>} />
-
+          <Route path="/queue-status/:userId/:queueId" element={<QueueStatus/>} />
+        
           {/* User Routes */}
           {/* <Route path="/join-queue" element={<JoinQueue />} />
           <Route path="/queue-status/:userId/:queueId" element={<QueueStatus />} /> */}
