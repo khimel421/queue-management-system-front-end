@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const AllQueuesByUser = ({ userId }) => {
   const [queues, setQueues] = useState([]);
@@ -36,6 +37,8 @@ const AllQueuesByUser = ({ userId }) => {
               <th className="px-4 py-2">Description</th>
               <th className="px-4 py-2">Max Capacity</th>
               <th className="px-4 py-2">Created At</th>
+              <th className="px-4 py-2">Show Customer queue</th>
+
             </tr>
           </thead>
           <tbody>
@@ -45,6 +48,7 @@ const AllQueuesByUser = ({ userId }) => {
                 <td className="border px-4 py-2">{queue.queue_description}</td>
                 <td className="border px-4 py-2">{queue.max_capacity}</td>
                 <td className="border px-4 py-2">{new Date(queue.created_at).toLocaleString()}</td>
+                <td className="border px-4 py-2"> <Link to={`/queue-management/${queue.id}`}> <button className='btn'>Details {queue.id}</button></Link> </td>
               </tr>
             ))}
           </tbody>

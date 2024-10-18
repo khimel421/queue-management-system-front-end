@@ -3,12 +3,13 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 
 import axios from "axios";
 import { auth } from "../firebase.config";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [role, setRole] = useState(""); // Default role as "enlister"
+  const [role, setRole] = useState("enlister"); // Default role as "enlister"
 
   // Handle sign-up
   const handleSignUp = async (e) => {
@@ -47,7 +48,7 @@ const Register = () => {
 
   return (
     <div className="signup-container space-y-4 border-2 border-black w-[40%] mx-auto p-4 mt-10">
-      <h1 className='text-center text-xl font-bold'>Sign Up</h1>
+      <h1 className='text-center text-xl font-bold'>Register</h1>
       <form className='space-y-4' onSubmit={handleSignUp}>
         <div>
           <label className="input input-bordered flex items-center gap-2">
@@ -77,7 +78,7 @@ const Register = () => {
                 d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
                 clipRule="evenodd" />
             </svg>
-            <input type="password" className="grow" type="password"
+            <input type="password" className="grow"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
@@ -94,6 +95,13 @@ const Register = () => {
         </div>
         <button className="btn" type="submit">Sign Up</button>
       </form>
+      <p className="text-gray-600">
+        Already have an account?
+        <Link to={`/signin`} className="text-blue-500 hover:text-blue-700 font-semibold transition duration-200">
+          Log In
+        </Link>
+      </p>
+
     </div>
   );
 };

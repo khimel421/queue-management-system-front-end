@@ -9,7 +9,8 @@ import Home from './pages/Home';
 import Login from './pages/LogIn';
 import ClientDashboard from './pages/ClientDashBoard';
 import Navbar from './components/Navbar';
-import QueueStatus from './components/QueueStatus';
+import JoinedQueues from './pages/JoinedQueues';
+import QueueManagement from './components/QueueManagement';
 
 const App = () => {
 
@@ -25,8 +26,10 @@ const App = () => {
           <Route path="/signup" element={<Register/>} />
           <Route path="/signin" element={<Login/>} />
           <Route path="/clientdashboard" element={<ClientDashboard/>} />
-          <Route path="/queue-status/:userId/:queueId" element={<QueueStatus/>} />
-        
+          <Route path="/queue-status/:userId/:queueId" element={<JoinedQueues/>} />
+          <Route path="/joined-queues/:userId" element={<JoinedQueues/>} />
+
+          <Route path="/queue-management/:queueId" element={<QueueManagement />} />
           {/* User Routes */}
           {/* <Route path="/join-queue" element={<JoinQueue />} />
           <Route path="/queue-status/:userId/:queueId" element={<QueueStatus />} /> */}

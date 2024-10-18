@@ -12,7 +12,7 @@ const ViewAllCustomers = ({ queueId, creatorId }) => {
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/view-queue/${queueId}`);
+        const response = await axios.get(`http://localhost:5000/view-queue/4`);
         setCustomers(response.data.customers);
       } catch (err) {
         setError('Failed to fetch customers. Please try again later.');
