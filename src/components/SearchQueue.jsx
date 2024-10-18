@@ -12,7 +12,7 @@ const SearchQueue = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`http://localhost:5000/api/queues/search?query=${query}`);
+      const response = await axios.get(`https://queue-management-system-khaki.vercel.app/api/queues/search?query=${query}`);
       setResults(response.data);
     } catch (error) {
       console.error('Error fetching search results:', error);

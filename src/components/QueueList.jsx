@@ -27,7 +27,7 @@ const QueueList = () => {
     const userId = currentUser.uid;
 
     try {
-      const response = await axios.post('http://localhost:5000/join-queue', {
+      const response = await axios.post('https://queue-management-system-khaki.vercel.app/join-queue', {
         userId,
         queueId,
       });

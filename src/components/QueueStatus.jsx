@@ -10,7 +10,7 @@ const QueueStatus = () => {
   useEffect(() => {
     const fetchQueueStatus = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/queue-status/${userId}/${queueId}`);
+        const response = await axios.get(`https://queue-management-system-khaki.vercel.app/api/queue-status/${userId}/${queueId}`);
         setQueueInfo(response.data);
       } catch (err) {
         console.error('Error fetching queue status:', err);

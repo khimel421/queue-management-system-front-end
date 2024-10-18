@@ -36,7 +36,7 @@ const Register = () => {
       };
 
       // Send the user data to your backend
-      await axios.post("http://localhost:5000/users/signup", newUser);
+      await axios.post("https://queue-management-system-khaki.vercel.app/users/signup", newUser);
       console.log(newUser);
 
       alert("User signed up and data saved in the database!");

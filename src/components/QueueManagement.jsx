@@ -25,7 +25,7 @@ const QueueManagement = () => {
 
   const handleServeUser = async (userId) => {
     try {
-      await axios.post(`http://localhost:5000/serve-user/${userId}/${queueId}`);
+      await axios.post(`https://queue-management-system-khaki.vercel.app/serve-user/${userId}/${queueId}`);
       fetchQueueData(); // Refresh queue data after serving a user
       setErrorMessage("");
     } catch (error) {

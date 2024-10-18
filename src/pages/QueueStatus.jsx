@@ -15,7 +15,7 @@ const QueueStatus = () => {
   // Function to fetch queue status
   const fetchQueueStatus = async () => {
     try {
-      const response = await axios.get(`/queue-status/${userId}/${queueId}`);
+      const response = await axios.get(`https://queue-management-system-khaki.vercel.app/queue-status/${userId}/${queueId}`);
       setQueueStatus(response.data);
       setErrorMessage("");
     } catch (error) {

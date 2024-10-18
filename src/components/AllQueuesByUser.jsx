@@ -11,7 +11,7 @@ const AllQueuesByUser = ({ userId }) => {
   useEffect(() => {
     const fetchQueues = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/queues/${userId}`);
+        const response = await axios.get(`https://queue-management-system-khaki.vercel.app/queues/${userId}`);
         setQueues(response.data.queues);
       } catch (err) {
         setError('Failed to fetch queues. Please try again later.');

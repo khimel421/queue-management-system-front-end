@@ -12,7 +12,7 @@ const ViewAllCustomers = ({ queueId, creatorId }) => {
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/view-queue/4`);
+        const response = await axios.get(`https://queue-management-system-khaki.vercel.app/view-queue/4`);
         setCustomers(response.data.customers);
       } catch (err) {
         setError('Failed to fetch customers. Please try again later.');
@@ -36,7 +36,7 @@ const ViewAllCustomers = ({ queueId, creatorId }) => {
   // Update the status of a user in the queue
   const updateStatus = async (userId, newStatus) => {
     try {
-      await axios.put(`http://localhost:5000/update-queue-status`, {
+      await axios.put(`https://queue-management-system-khaki.vercel.app/update-queue-status`, {
         userId,
         queueId,
         status: newStatus,

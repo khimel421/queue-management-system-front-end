@@ -9,7 +9,7 @@ const useFetchUserName = (userId) => {
   useEffect(() => {
     const fetchUserName = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/users/${userId}`);
+        const response = await axios.get(`https://queue-management-system-khaki.vercel.app/api/users/${userId}`);
         setUserName(response.data.name);
       } catch (error) {
         setError(error.response?.data?.message || 'Failed to fetch user name');

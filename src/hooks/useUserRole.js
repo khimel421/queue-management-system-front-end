@@ -19,7 +19,7 @@ const useUserRole = () => {
 
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5000/user-role/${currentUser.uid}`);
+        const response = await axios.get(`https://queue-management-system-khaki.vercel.app/user-role/${currentUser.uid}`);
         setUserRole(response.data.role);
       } catch (err) {
         console.error('Error fetching user role:', err);

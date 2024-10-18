@@ -35,7 +35,7 @@ const CreateQueue = () => {
       };
 
       // Send POST request to the backend API
-      const response = await axios.post('http://localhost:5000/create-queue', data);
+      const response = await axios.post('https://queue-management-system-khaki.vercel.app/create-queue', data);
 
       if (response.status === 200) {
         setMessage('Queue created successfully!');

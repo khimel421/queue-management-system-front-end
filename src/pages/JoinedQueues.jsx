@@ -14,7 +14,7 @@ const JoinedQueues = () => {
 
   const fetchJoinedQueues = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/joined-queues/${userId}`);
+      const response = await axios.get(`https://queue-management-system-khaki.vercel.app/joined-queues/${userId}`);
       setQueues(response.data.joinedQueues);
     } catch (error) {
       setErrorMessage(
