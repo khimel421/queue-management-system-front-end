@@ -14,7 +14,7 @@ const JoinedQueues = () => {
 
   const fetchJoinedQueues = async () => {
     try {
-      const response = await axios.get(`https://queue-management-system-khaki.vercel.app/joined-queues/${userId}`);
+      const response = await axios.get(`http://localhost:5000/joined-queues/${userId}`);
       setQueues(response.data.joinedQueues);
     } catch (error) {
       setErrorMessage(
@@ -32,9 +32,9 @@ const JoinedQueues = () => {
       )}
 
       {queues.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className=" gap-5">
           {queues.map((queue, idx) => (
-            <div key={idx} className="bg-white shadow-lg rounded-lg p-5 border border-gray-200">
+            <div key={idx} className="bg-white shadow-lg rounded-lg p-5 border border-gray-200 max-w-96">
               <h3 className="text-xl font-semibold mb-2">{queue.queue_name}</h3>
               <p className="text-gray-700 mb-2">
                 <strong>Description:</strong> {queue.queue_description}
@@ -45,20 +45,31 @@ const JoinedQueues = () => {
               <p className="text-gray-700">
                 <strong>Queue Number:</strong> <span className=" rounded-full  amoled">{queue.queue_number}</span>
               </p> */}
-              <div className="flex justify-between">
+              <div className={`flex ${queue.status === "served" ? "justify-center" : "justify-between" }`}>
                 <div className="space-y-4">
-                  <div className="amoled rounded-full w-[100px] h-[100px] flex items-center justify-center">
+                  <div className={`amoled rounded-full w-[100px] h-[100px] flex items-center justify-center ${queue.status === "served" ? "bg-green-400 text-white" : "bg-yellow-300 text-white"}`}>
                     <p className="text-xl font-bold">{queue.status}</p>
                   </div>
                   <p className="font-semibold text-center">status</p>
                 </div>
-
-                <div className="space-y-4">
-                  <div className="amoled rounded-full w-[100px] h-[100px] flex items-center justify-center">
-                    <p className="text-xl font-bold">{queue.queue_number}</p>
+                {queue.status !== "served" ? (
+                  <div className="space-y-4">
+                    <div className="amoled rounded-full w-[100px] h-[100px] flex items-center justify-center">
+                      <p className="text-xl font-bold">{queue.queue_number}</p>
+                    </div>
+                    <p className="font-semibold">Token number</p>
                   </div>
-                  <p className="font-semibold">people ahead</p>
-                </div>
+                ) : ""}
+
+                {queue.status !== "served" ? (
+                  <div className="space-y-4">
+                    <div className="amoled rounded-full w-[100px] h-[100px] flex items-center justify-center">
+                      <p className="text-xl font-bold">{queue.queue_number - 1}</p>
+                    </div>
+                    <p className="font-semibold">people ahead</p>
+                  </div>
+                ) : ""}
+
               </div>
 
             </div>

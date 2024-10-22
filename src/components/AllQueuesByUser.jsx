@@ -7,11 +7,24 @@ const AllQueuesByUser = ({ userId }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
+
+  
+  const handleDeleteQueue = async (queueId) => {
+    try {
+      const response = await axios.delete(`http://localhost:5000/delete-queue/${queueId}`);
+      alert(response.data.message);
+    } catch (error) {
+      console.error("Error deleting queue:", error);
+      alert(error.response.data.message);
+    }
+  };
+
+
   // Fetch all queues created by the given user ID
   useEffect(() => {
     const fetchQueues = async () => {
       try {
-        const response = await axios.get(`https://queue-management-system-khaki.vercel.app/queues/${userId}`);
+        const response = await axios.get(`http://localhost:5000/queues/${userId}`);
         setQueues(response.data.queues);
       } catch (err) {
         setError('Failed to fetch queues. Please try again later.');
@@ -38,6 +51,7 @@ const AllQueuesByUser = ({ userId }) => {
               <th className="px-4 py-2">Max Capacity</th>
               <th className="px-4 py-2">Created At</th>
               <th className="px-4 py-2">Show Customer queue</th>
+              <th className="px-4 py-2">Delete queue</th>
 
             </tr>
           </thead>
@@ -48,7 +62,8 @@ const AllQueuesByUser = ({ userId }) => {
                 <td className="border px-4 py-2">{queue.queue_description}</td>
                 <td className="border px-4 py-2">{queue.max_capacity}</td>
                 <td className="border px-4 py-2">{new Date(queue.created_at).toLocaleString()}</td>
-                <td className="border px-4 py-2"> <Link to={`/queue-management/${queue.id}`}> <button className='btn'>Details {queue.id}</button></Link> </td>
+                <td className="border px-4 py-2"> <Link to={`/queue-management/${queue.id}`}> <button className='btn'>Details</button></Link> </td>
+                <td className="border px-4 py-2"> <button onClick={() => handleDeleteQueue(queue.id)} className='btn bg-red-500 text-white' >Delete</button></td>
               </tr>
             ))}
           </tbody>

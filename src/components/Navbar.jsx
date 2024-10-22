@@ -10,10 +10,10 @@ export default function Navbar() {
     const { currentUser } = useAuth();
     const userId = currentUser?.uid
     const navigate = useNavigate();
-    const { userRole} = useUserRole();
+    const { userRole } = useUserRole();
 
     const { userName, loading, error } = useFetchUserName(userId);
- console.log(userName)
+    console.log(userName)
     const handleLogout = async () => {
         await signOut(auth);
         navigate("/");
@@ -34,13 +34,15 @@ export default function Navbar() {
                             </div>
                             {userRole != 'creator' ? <Link to={`/joined-queues/${currentUser.uid}`}>
                                 <button className="btn">Show Queue Status</button>
-                            </Link> : ""}
-                            
+                            </Link> : <Link to={`/clientDashboard`}>
+                                <button className="btn">Dashboard</button>
+                            </Link>}
+
                         </div>
 
                         ) : ""
                     }
-                               
+
                 </div>
             </div>
         </div>
