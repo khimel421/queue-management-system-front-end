@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const QueueList = () => {
   const [queues, setQueues] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
+  const [btn , setBtn] = useState('')
   const { currentUser } = useAuth();
   const navigate = useNavigate();
 

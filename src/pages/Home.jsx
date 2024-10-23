@@ -39,10 +39,10 @@ const Home = () => {
               <h3 className="text-xl font-semibold">Real-Time Updates</h3>
               <p>Receive real-time notifications about your queue status.</p>
             </div>
-            <div className="bg-white shadow-lg p-6 rounded-lg max-w-xs">
+            {/* <div className="bg-white shadow-lg p-6 rounded-lg max-w-xs">
               <h3 className="text-xl font-semibold">QR Code Generation</h3>
               <p>Get a unique QR code for your appointment for easy check-in.</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

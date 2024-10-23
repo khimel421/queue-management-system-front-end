@@ -40,10 +40,26 @@ export default function Navbar() {
 
                         </div>
 
-                        ) : ""
-                    }
+                        ) : (
+                            <div className='flex gap-2'>
+                                <Link to={`/signin`}>
+                                    <div>
+                                        <button className="btn">LogIn</button>
+                                    </div>
+                                </Link>
 
+                                <Link to={`/signup`}>
+                                    <div>
+                                        <button className="btn">Register</button>
+                                    </div>
+                                </Link>
+                            </div>
+
+
+                        )
+                    }
                 </div>
+
             </div>
         </div>
     )
